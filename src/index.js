@@ -28,17 +28,12 @@ function handleInput(event) {
           'Too many matches found. Please enter a more specific name.'
         );
       }
-
-      if (data.status === 404) {
-        event.target.value = '';
-       let error = new Error(data.statusText);
-       error.r = data;
-       throw error;
-      }
     })
     .catch(error => {
       console.log(error);
-      Notify.failure('Oops, there is no country with that name');
+      if (error.message === 404) {
+        Notify.failure('Oops, there is no country with that name');
+      }
     });
 }
 
