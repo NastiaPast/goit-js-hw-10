@@ -31,9 +31,7 @@ function handleInput(event) {
     })
     .catch(error => {
       console.log(error);
-      if (error.message === 404) {
         Notify.failure('Oops, there is no country with that name');
-      }
     });
 }
 
